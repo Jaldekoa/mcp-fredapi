@@ -32,7 +32,7 @@ There are two installation methods:
 Install the required dependencies:
 
 ```terminal
-pip install mcp httpx python-dotenv
+pip install "mcp[cli]" httpx python-dotenv
 ```
 
 Clone this repository:
@@ -99,7 +99,7 @@ Replace `/path/to/mcp-fredapi` with the actual path to the repository on your sy
   "mcpServers": {
     "mcp-fredapi": {
       "command": "uv",
-      "args": ["--directory", "C:/Users/username/Desktop/mcp-fredapi", "run", "--with", "mcp", "--with", "httpx", "mcp", "run", "server.py"]
+      "args": ["--directory", "/path/to/mcp-fredapi", "run", "--with", "mcp", "--with", "httpx", "mcp", "run", "server.py"]
     }
   }
 }
@@ -138,6 +138,13 @@ The `get_fred_series_observations` tool accepts the following parameters. For co
 | observation_start | str | Start date of observations (YYYY-MM-DD) | - | None | ❌ Not working |
 | observation_end | str | End date of observations (YYYY-MM-DD) | - | None | ❌ Not working |
 | vintage_dates | str | Comma-separated list of vintage dates | - | None | ❌ Not working |
+
+> [!WARNING] **Note on Parameter Compatibility**
+> Due to current limitations with the MCP implementation, only certain parameters are working properly:
+> - ✅ **Working parameters**: `series_id`, `sort_order`, `units`, `frequency` , aggregation_method`, and `output_type`.
+> - ❌ **Non-working parameters**: `realtime_start`, `realtime_end`, `limit`, `offset`, `observation_start`, `observation_end`, and `vintage_dates`.
+>
+>For best results, stick with the working parameters in your queries. Future updates may resolve these limitations.
 
 ## Examples
 
@@ -204,15 +211,6 @@ Show me GDP data in a different format.
   "output_type": 2
 }
 ```
-
-### Note on Parameter Compatibility
-
-Due to current limitations with the MCP implementation, only certain parameters are working properly:
-
-- ✅ **Working parameters**: `series_id`, `sort_order`, `units`, `frequency`, `aggregation_method`, and `output_type`.
-- ❌ **Non-working parameters**: `realtime_start`, `realtime_end`, `limit`, `offset`, `observation_start`, `observation_end`, and `vintage_dates`.
-
-For best results, stick with the working parameters in your queries. Future updates may resolve these limitations.
 
 ## Contributing
 
