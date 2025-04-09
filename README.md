@@ -139,13 +139,13 @@ The `get_fred_series_observations` tool accepts the following parameters. For co
 | observation_end | str | End date of observations (YYYY-MM-DD) | - | None | ❌ Not working |
 | vintage_dates | str | Comma-separated list of vintage dates | - | None | ❌ Not working |
 
-> [!WARNING] **Note on Parameter Compatibility**
+> [!WARNING]
 > 
 > Due to current limitations with the MCP implementation, only certain parameters are working properly:
 > - ✅ **Working parameters**: `series_id`, `sort_order`, `units`, `frequency` , aggregation_method`, and `output_type`.
 > - ❌ **Non-working parameters**: `realtime_start`, `realtime_end`, `limit`, `offset`, `observation_start`, `observation_end`, and `vintage_dates`.
 >
->For best results, stick with the working parameters in your queries. Future updates may resolve these limitations.
+> For best results, stick with the working parameters in your queries. Future updates may resolve these limitations.
 
 ## Examples
 
